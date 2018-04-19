@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Start
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-title>Select Course and Tee Type</ion-title>
+        <ion-list>
+          <ion-item>
+            <select title="golfCourses" (change)="getCourseTees($event.target.value)">
+              <option>
+                Select a course
+              </option>
+              <option *ngFor="let course of golfCourses?.courses" value="{{course.id}}">
+                {{course.name}}
+              </option>
+            </select>
+          </ion-item>
+          <ion-item>
+            <select title="golfCourse" (change)='saveTeeType($event.target.value)'>
+              <option>
+                Select a tee
+              </option>
+              <option *ngFor="let teetype of teeTypes" value="{{teetype?.tee_type}}">
+                {{teetype?.tee_type}}
+              </option>
+            </select>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+      <ion-item>
+        <input [(ngModel)]="players[0]" (blur)="checkName(players[0], 0)" placeholder="Player's Name" type="text">
+      </ion-item>
+      <ion-item *ngIf="players.length >= 2">
+        <input [(ngModel)]="players[1]" (blur)="checkName(players[1], 1)" placeholder="Player's Name" type="text">
+      </ion-item>
+      <ion-item *ngIf="players.length >= 3">
+        <input [(ngModel)]="players[2]" (blur)="checkName(players[2], 2)" placeholder="Player's Name" type="text">
+      </ion-item>
+      <ion-item *ngIf="players.length >= 4">
+        <input [(ngModel)]="players[3]" (blur)="checkName(players[3], 3)" placeholder="Player's Name" type="text">
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="addPlayer()">Add a Player</button>
+    <button ion-button (click)="startGame()">Shall We Play a Game?</button>
+  </ion-card>
+</ion-content>

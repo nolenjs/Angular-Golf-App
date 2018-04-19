@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Game</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <table style="width:100%">
+      <tr>
+        <td><b>Hole</b></td>
+        <td *ngFor="let player of players"><b>{{player}}</b></td>
+        <td><b>Par</b></td>
+        <td><b>Yards</b></td>
+        <td><b>HCP</b></td>
+      </tr>
+      <tr *ngFor="let hole of holes">
+        <td>{{hole}}</td>
+        <td *ngFor="let player of players">
+          <input ngModel='input' (blur)="addInput(player, hole, $event.target.value)" placeholder="Score">
+        </td>
+        <td>{{par[hole - 1]}}</td>
+        <td>{{yards[hole - 1]}}</td>
+        <td>{{hcp[hole - 1]}}</td>
+      </tr>
+      <tr>
+        <td><b>Score In</b></td>
+        <td *ngFor="let player of players"><b></b></td>
+        <td><b>{{getTotals('par')}}</b></td>
+        <td><b>{{getTotals('yards')}}</b></td>
+        <td><b>{{getTotals('hcp')}}</b></td>
+      </tr>
+      <tr>
+        <td><b>Score Out</b></td>
+        <td *ngFor="let player of players"><b></b></td>
+        <td><b>{{getTotals('par')}}</b></td>
+        <td><b>{{getTotals('yards')}}</b></td>
+        <td><b>{{getTotals('hcp')}}</b></td>
+      </tr>
+      <tr>
+        <td><b>Total Score</b></td>
+        <td *ngFor="let player of players"><b></b></td>
+        <td><b>{{getTotals('par')}}</b></td>
+        <td><b>{{getTotals('yards')}}</b></td>
+        <td><b>{{getTotals('hcp')}}</b></td>
+      </tr>
+    </table>
+  </ion-card>
+</ion-content>
+
+
